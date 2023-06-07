@@ -8,6 +8,16 @@ This assumes the language to be English. You can change the language type in the
 
 To build docker image: `docker build -t sumeetdas/whisper.cpp-docker .`
 
+Docker command to create a container (Windows):
+```sh
+docker run --name whisper_cpp -v 'C:\Users\user\dir_name':/usr/local/src/whisper.cpp/mnt sumeetdas/whisper.cpp-docker  sleep infinitely
+```
+
+Docker command to run a command on the container:
+```sh
+docker exec whisper_cpp entrypoint.sh translate $FILE_NAME
+```
+
 Docker command:
 
 ```sh

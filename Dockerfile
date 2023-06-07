@@ -15,10 +15,12 @@ RUN bash ./models/download-ggml-model.sh medium.en
 
 # quantize a model with Q5_0 method
 RUN make quantize
-RUN ./quantize models/ggml-medium.en.bin models/ggml-base.en-q5_0.bin q5_0
-
-RUN apk add --no-cache --virtual libsdl2-dev
+RUN ./quantize models/ggml-medium.en.bin models/ggml-medium.en-q5_0.bin q5_0
 
 RUN make
+
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk add sdl2-dev
+RUN make command
 
 ADD entrypoint.sh /usr/local/bin
